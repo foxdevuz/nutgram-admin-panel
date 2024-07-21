@@ -14,5 +14,6 @@ use SergiX44\Nutgram\Nutgram;
 */
 
 $bot->onCommand('start', function (Nutgram $bot) {
-    $bot->sendMessage('Hello, world!');
+    $text = trans('main.start_message');
+    $bot->sendMessage($text);
 })->description('The start command!');
