@@ -7,10 +7,6 @@
     </a>
 </p>
 
-<p align="center">
-
-[//]: # (// I will write later&#41;)
-</p>
 
 ## About Project
 This is an admin panel for controlling Telegram bots using Laravel + Nutgram. 
