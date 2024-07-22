@@ -1,19 +1,15 @@
 <?php
 /** @var SergiX44\Nutgram\Nutgram $bot */
 
+use App\Http\Controllers\AdminController;
+use App\Telegram\Commands\AdminCommand;
+use App\Telegram\Commands\StartCommand;
+use App\Telegram\Conversations\StatisticsConversation;
+use App\Telegram\Middleware\CheckAdmin;
 use SergiX44\Nutgram\Nutgram;
 
-/*
-|--------------------------------------------------------------------------
-| Nutgram Handlers
-|--------------------------------------------------------------------------
-|
-| Here is where you can register telegram handlers for Nutgram. These
-| handlers are loaded by the NutgramServiceProvider. Enjoy!
-|
-*/
-
-$bot->onCommand('start', function (Nutgram $bot) {
-    $text = trans('main.start_message');
-    $bot->sendMessage($text);
-})->description('The start command!');
+// Admin Panel section
+$bot->onCommand("admin", AdminCommand::class)->middleware(CheckAdmin::class);
+$bot->onText(trans("admin_panel_keyboards.stats"), StatisticsConversation::class)->middleware(CheckAdmin::class);
+// Regular Users section
+$bot->onCommand('start', StartCommand::class);
