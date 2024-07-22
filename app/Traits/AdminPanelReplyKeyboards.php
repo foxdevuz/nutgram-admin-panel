@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Trait;
+namespace App\Traits;
 
 use SergiX44\Nutgram\Telegram\Types\Keyboard\KeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardMarkup;
