@@ -1,12 +1,10 @@
 <?php
 /** @var SergiX44\Nutgram\Nutgram $bot */
 
-use App\Http\Controllers\AdminController;
 use App\Telegram\Commands\AdminCommand;
 use App\Telegram\Commands\StartCommand;
 use App\Telegram\Conversations\StatisticsConversation;
 use App\Telegram\Middleware\CheckAdmin;
-use SergiX44\Nutgram\Nutgram;
 
 // Admin Panel section
 $bot->onCommand("admin", AdminCommand::class)->middleware(CheckAdmin::class);
