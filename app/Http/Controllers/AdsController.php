@@ -18,34 +18,25 @@ class AdsController extends Controller
     public function sendAds()
     {
         $bot = new Nutgram(env("TELEGRAM_TOKEN"));
-        $ads = $this->getAds();
-        $users = $this->getAllUsers();
-        if (count($ads) == 0 || $users->isEmpty()) {
-            return response()->json(["message" => "No Ads or Users found"]);
+        $ads = Ads::where(column: "is_allowed", value: true)->first();
+        if (!$ads) {
+            return response()->json(["message" => "No Ads found"], 404);
         }
-        foreach ($ads as $ad) {
-            foreach ($users as $user) {
-                $bot->copyMessage(
-                    chat_id: $user->user_id,
-                    from_chat_id: $ad->from_id,
-                    message_id: $ad->message_id
-                );
-                // Sleep for 32 milliseconds to avoid hitting rate limits
-                sleep(0.032);
-            }
-            $this->resetAds($ad["id"]);
-        }
+        $current_user_index = $ads->current_user_index;
+        $user_index_limit = $current_user_index + 30;
+        $users = User::where(
+            column: "id",
+            operator: ">=",
+            value: $current_user_index
+        )->where(
+            column: "id",
+            operator: "<=",
+            value: $user_index_limit
+        )->get();
+
+
+
         return response()->json(["message" => "Ads sent successfully"]);
-    }
-
-    private function getAds() : array
-    {
-        return Ads::where(column: "is_allowed", operator: true)->get()->toArray();
-    }
-
-    private function getAllUsers()
-    {
-        return User::all();
     }
 
     public static function store(int $from_id, int $msg_id, string $admin_name, bool $is_allowed = true) : bool

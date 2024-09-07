@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("from_id");
             $table->string("message_id");
+            $table->string("current_user_index");
             $table->string("admin_name"); // Admin Name who sent this Ad
             $table->boolean("is_allowed")->default(false); // does this Ads allowed to be sent to the users
             $table->timestamps();
