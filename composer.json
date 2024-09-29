@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "foxdevuz/ngap",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "A telegram bot admin panel",
+    "keywords": ["laravel", "framework", "bot", "telegram", "admin", "panel"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
