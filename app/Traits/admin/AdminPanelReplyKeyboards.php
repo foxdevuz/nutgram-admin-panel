@@ -51,4 +51,24 @@ trait AdminPanelReplyKeyboards
                 KeyboardButton::make(trans("main.cancel"))
             );
     }
+
+    protected function manageChannelsKeyboard() : ReplyKeyboardMarkup
+    {
+        return ReplyKeyboardMarkup::make(
+            resize_keyboard: true,
+            one_time_keyboard: true
+        )
+            ->addRow(
+                KeyboardButton::make(trans("manage_channels.add_channel")),
+                KeyboardButton::make(trans("manage_channels.remove_channel"))
+            )
+            ->addRow(
+                KeyboardButton::make(trans("manage_channels.show_channels"))
+            )
+            ->addRow(
+                KeyboardButton::make(trans("main.cancel"))
+            );
+
+
+    }
 }

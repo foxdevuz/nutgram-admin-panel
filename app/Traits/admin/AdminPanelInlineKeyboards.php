@@ -11,7 +11,7 @@ trait AdminPanelInlineKeyboards
     {
         return InlineKeyboardMarkup::make()
             ->addRow(
-                InlineKeyboardButton::make(trans("admin_panel.dev"), url: env("DEV_TELEGRAM")),
+                InlineKeyboardButton::make(trans("admin_panel.dev"), url: "https://t.me/".env("DEV_TELEGRAM")),
             );
     }
 }
