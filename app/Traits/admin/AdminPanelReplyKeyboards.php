@@ -21,9 +21,6 @@ trait AdminPanelReplyKeyboards
             ->addRow(
                 KeyboardButton::make(text: trans('admin_panel_keyboards.manage_admin')),
                 KeyboardButton::make(text: trans('admin_panel_keyboards.manage_channels'))
-            )
-            ->addRow(
-                KeyboardButton::make(trans("admin_panel_keyboards.ongoing_actions"))
             );
     }
     protected function back() : ReplyKeyboardMarkup
