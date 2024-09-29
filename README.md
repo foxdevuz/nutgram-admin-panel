@@ -7,7 +7,90 @@
     </a>
 </p>
 
-
 ## About Project
-This is an admin panel for controlling Telegram bots using Laravel + Nutgram. 
 
+This project is an admin panel for controlling Telegram bots using Laravel and Nutgram. It leverages the power of Laravel for backend operations and Nutgram for handling Telegram bot interactions.
+
+### Key Features
+
+- **Admin Panel**: Provides an interface for managing Telegram bots.
+- **User Management**: Allows administrators to manage users and their permissions.
+- **Statistics**: Displays various statistics related to bot usage.
+- **Ads Management**: Enables sending advertisements through the bot.
+- **Channel Management**: Facilitates the management of Telegram channels.
+
+### Technologies Used
+
+- **PHP**: The core programming language used for backend development.
+- **Laravel**: A PHP framework used for building the web application.
+- **Nutgram**: A PHP library for creating Telegram bots.
+
+### Installation
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-repo/your-project.git
+    cd your-project
+    ```
+
+2. **Install PHP dependencies**:
+    ```bash
+    composer install
+    ```
+   
+3. **Copy the `.env` file and configure your environment variables**:
+    ```bash
+    cp .env.example .env
+    ```
+
+4. **Generate an application key**:
+    ```bash
+    php artisan key:generate
+    ```
+
+5. **Run database migrations**:
+    ```bash
+    php artisan migrate
+    ```
+
+6. **Start the development server on local**:
+    ```bash
+    php artisan nutgram:run
+    ```
+
+### Usage
+
+- **Admin Commands**: Use the `/admin` command to access the admin panel.
+- **Statistics**: Use the `stats` command to view bot statistics.
+- **Send Ads**: Use the `send_ad` command to send advertisements.
+- **Manage Admins**: Use the `manage_admin` command to manage administrators.
+- **Manage Channels**: Use the `manage_channels` command to manage Telegram channels.
+- **Start Command**: Use the `start` command to initiate the bot.
+- **Since it uses localization you will see the commands in `/lang` directory.**
+### Environment Variables
+
+- **APP\_NAME**: The name of the application.
+- **APP\_ENV**: The application environment (e.g., local, production).
+- **APP\_KEY**: The application key.
+- **APP\_DEBUG**: Enable or disable debug mode.
+- **DB\_CONNECTION**: The database connection type.
+- **DB\_HOST**: The database host.
+- **DB\_PORT**: The database port.
+- **DB\_DATABASE**: The database name.
+- **DB\_USERNAME**: The database username.
+- **DB\_PASSWORD**: The database password.
+- **TELEGRAM\_TOKEN**: The token for the Telegram bot.
+- **MAIN\_ADMIN\_ID**: The Telegram ID of the main admin.
+- **DEV\_TELEGRAM**: The Telegram username of the developer.
+
+### Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
+
+### License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
