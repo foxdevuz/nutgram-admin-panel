@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
     {
         Admin::create([
             "name"=>"Main Admin",
-            "chat_id"=>env("ADMIN_ID"),
+            "chat_id"=>env("MAIN_ADMIN_ID"),
             "is_main"=>true,
             "can_send_ads"=>true,
             "can_add_admin"=>true,

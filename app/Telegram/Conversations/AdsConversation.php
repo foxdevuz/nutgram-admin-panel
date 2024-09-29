@@ -4,8 +4,8 @@ namespace App\Telegram\Conversations;
 
 use App\Http\Controllers\AdsController;
 use App\Models\User;
-use App\Traits\AdminHelpers;
-use App\Traits\SendAdsKeyboard;
+use App\Traits\admin\AdminHelpers;
+use App\Traits\admin\SendAdsKeyboard;
 use Psr\SimpleCache\InvalidArgumentException;
 use SergiX44\Nutgram\Conversations\Conversation;
 use SergiX44\Nutgram\Nutgram;
@@ -20,7 +20,8 @@ class AdsConversation extends Conversation
     public function start(Nutgram $bot): void
     {
         $bot->sendMessage(
-            text: trans("send_ads.start")
+            text: trans("send_ads.start"),
+            reply_markup: $this->back()
         );
         $this->next('getAds');
     }
@@ -48,7 +49,6 @@ class AdsConversation extends Conversation
         $text = $bot->message()->text;
         if ($text == trans("main.cancel") || $text == "❌") {
             $this->actionCancelled($bot);
-            return;
         } else if ($text == "✅") {
            $admin_name = $this->getAdminName($bot->chatId());
            AdsController::store($bot->chatId(), $bot->messageId(), $admin_name);
@@ -62,9 +62,7 @@ class AdsConversation extends Conversation
                     text: trans("send_ads.no_user_to_send"),
                     reply_markup: $this->startKeyboards()
                 );
-                return;
             }
-           return;
         }
     }
 }

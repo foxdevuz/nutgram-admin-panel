@@ -2,9 +2,9 @@
 
 namespace App\Telegram\Commands;
 
-use App\Traits\AdminPanelReplyKeyboards;
-use SergiX44\Nutgram\Nutgram;
+use App\Traits\admin\AdminPanelReplyKeyboards;
 use SergiX44\Nutgram\Handlers\Type\Command;
+use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Properties\ParseMode;
 
 class AdminCommand extends Command

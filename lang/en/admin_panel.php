@@ -9,7 +9,10 @@ $stat_text .= "Users who joined in the last week: ".StatisticsController::getLas
 $stat_text .= "Users who joined today: ".StatisticsController::getToday()."\n";
 
 return [
-    "start_msg"=>"👋 Hello Admin! Welcome to " . env("BOT_NAME") . "'s admin panel! Please choose the section you want to manage.",
+    "start_msg"=>"👋 Hello Admin! Welcome to " . env("BOT_NAME", "APP_NAME") . "'s admin panel! Please choose the section you want to manage.",
     "admin_start_placeholder"=>"Please choose the section you want to manage.",
     "stat_text"=>$stat_text,
+    "back"=>"🔙 Back",
+    "went_wrong"=>"Something went wrong! Please try again. If the problem persists, please contact the developer.",
+    "dev"=>"Developer",
 ];

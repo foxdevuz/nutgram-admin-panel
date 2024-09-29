@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\admin;
 
 use SergiX44\Nutgram\Telegram\Types\Keyboard\KeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardMarkup;
@@ -24,6 +24,34 @@ trait AdminPanelReplyKeyboards
             )
             ->addRow(
                 KeyboardButton::make(trans("admin_panel_keyboards.ongoing_actions"))
+            );
+    }
+    protected function back() : ReplyKeyboardMarkup
+    {
+        return ReplyKeyboardMarkup::make(
+            resize_keyboard: true,
+            one_time_keyboard: true
+        )
+            ->addRow(
+                KeyboardButton::make(trans("main.cancel"))
+            );
+    }
+
+    protected function manageAdminsKeyboard() : ReplyKeyboardMarkup
+    {
+        return ReplyKeyboardMarkup::make(
+            resize_keyboard: true,
+            one_time_keyboard: true
+        )
+            ->addRow(
+                KeyboardButton::make(trans("manage_admins.add")),
+                KeyboardButton::make(trans("manage_admins.remove"))
+            )
+            ->addRow(
+                KeyboardButton::make(trans("manage_admins.show"))
+            )
+            ->addRow(
+                KeyboardButton::make(trans("main.cancel"))
             );
     }
 }
