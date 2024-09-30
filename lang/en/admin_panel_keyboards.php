@@ -4,5 +4,4 @@ return [
     "send_ad"=>"💠 Send Ads",
     "manage_admin"=>"🎛 Manage Admins",
     "manage_channels"=>"🧮 Manage Channels",
-    "ongoing_actions"=>"▶️ Ongoing Actions",
 ];
