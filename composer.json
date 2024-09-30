@@ -1,7 +1,7 @@
 {
     "name": "foxdevuz/ngap",
     "type": "project",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A telegram bot admin panel",
     "keywords": ["laravel", "framework", "bot", "telegram", "admin", "panel"],
     "license": "MIT",
@@ -63,6 +63,5 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "minimum-stability": "stable"
 }
