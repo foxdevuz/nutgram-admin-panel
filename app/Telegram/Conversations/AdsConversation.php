@@ -31,6 +31,10 @@ class AdsConversation extends Conversation
      */
     public function getAds(Nutgram $bot): void
     {
+        if ($this->checkIfActionCancelled($bot)) {
+            $this->actionCancelled($bot);
+            return;
+        }
         $bot->copyMessage(
             chat_id: $bot->chatId(),
             from_chat_id: $bot->chatId(),
@@ -44,6 +48,9 @@ class AdsConversation extends Conversation
         $this->next("storeAds");
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function storeAds(Nutgram $bot) : void
     {
         $text = $bot->message()->text;
