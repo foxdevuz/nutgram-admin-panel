@@ -33,27 +33,12 @@ This project is an admin panel for controlling Telegram bots using Laravel and N
     cd ./ngap
    ```
 
-2. **Install PHP dependencies**:
-    ```bash
-    composer install
-    ```
-   
-3. **Copy the `.env` file and configure your environment variables**:
-    ```bash
-    cp .env.example .env
-    ```
-
-4. **Generate an application key**:
-    ```bash
-    php artisan key:generate
-    ```
-
-5. **Run database migrations**:
+2. **Run database migrations**:
     ```bash
     php artisan migrate
     ```
 
-6. **Start the development server on local**:
+3. **Start the development server on local**:
     ```bash
     php artisan nutgram:run
     ```
