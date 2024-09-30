@@ -29,8 +29,8 @@ This project is an admin panel for controlling Telegram bots using Laravel and N
 
 1. **Create as project**:
     ```bash
-    composer create-project foxdevuz/ngap
-    cd ./ngap
+   composer create-project --stability=dev foxdevuz/ngap    
+   cd ./ngap
    ```
 
 2. **Run database migrations**:
