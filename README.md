@@ -27,11 +27,11 @@ This project is an admin panel for controlling Telegram bots using Laravel and N
 
 ### Installation
 
-1. **Clone the repository**:
+1. **Create as project**:
     ```bash
-    git clone https://github.com/your-repo/your-project.git
-    cd your-project
-    ```
+    composer create-project foxdevuz/ngap
+    cd ./ngap
+   ```
 
 2. **Install PHP dependencies**:
     ```bash
