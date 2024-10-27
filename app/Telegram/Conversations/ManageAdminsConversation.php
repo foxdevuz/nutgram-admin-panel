@@ -32,6 +32,10 @@ class ManageAdminsConversation extends Conversation
      */
     public function secondStep(Nutgram $bot): void
     {
+        if ($this->checkIfActionCancelled($bot)) {
+            $this->actionCancelled($bot, "back");
+            return;
+        }
         $this->checkIfActionCancelled($bot);
         $text = $bot->message()?->text;
         switch ($text) {

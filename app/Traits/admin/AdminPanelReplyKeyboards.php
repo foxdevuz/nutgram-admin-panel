@@ -48,7 +48,7 @@ trait AdminPanelReplyKeyboards
                 KeyboardButton::make(trans("manage_admins.show"))
             )
             ->addRow(
-                KeyboardButton::make(trans("main.cancel"))
+                KeyboardButton::make(trans("main.back"))
             );
     }
 
