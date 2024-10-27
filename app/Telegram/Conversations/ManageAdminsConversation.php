@@ -126,6 +126,10 @@ class ManageAdminsConversation extends Conversation
             text: $this->getAdminsList(),
             reply_markup: $this->back()
         );
+        $bot->sendMessage(
+            text: trans("manage_admins.admin_id_remove"),
+            reply_markup: $this->back()
+        );
         $this->next('removeAdminId');
     }
 

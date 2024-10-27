@@ -66,7 +66,7 @@ trait AdminPanelReplyKeyboards
                 KeyboardButton::make(trans("manage_channels.show_channels"))
             )
             ->addRow(
-                KeyboardButton::make(trans("main.cancel"))
+                KeyboardButton::make(trans("main.back"))
             );
 
 

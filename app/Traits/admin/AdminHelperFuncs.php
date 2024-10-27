@@ -11,7 +11,7 @@ trait AdminHelperFuncs {
     protected function checkIfActionCancelled(Nutgram $bot): bool
     {
         $text = $bot->message()?->text ?? $bot->callbackQuery()?->data;
-        if ($text == trans("main.cancel") || $text == "❌" || $text == "cancel") {
+        if ($text == trans("main.cancel") || $text == "❌" || $text == "cancel" || $text == trans("main.back")) {
            return true;
         }
         return false;

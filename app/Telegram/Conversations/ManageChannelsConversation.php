@@ -4,6 +4,7 @@ namespace App\Telegram\Conversations;
 
 use App\Models\Channel;
 use App\Traits\admin\AdminHelpers;
+use App\Traits\admin\ChannelParser;
 use Illuminate\Support\Facades\Cache;
 use Psr\SimpleCache\InvalidArgumentException;
 use SergiX44\Nutgram\Conversations\Conversation;
@@ -21,7 +22,7 @@ use SergiX44\Nutgram\Nutgram;
 
 class ManageChannelsConversation extends Conversation
 {
-    use AdminHelpers;
+    use AdminHelpers, ChannelParser;
 
     private const CACHE_KEY_PREFIX = 'channel_name_';
 
@@ -43,7 +44,7 @@ class ManageChannelsConversation extends Conversation
     public function handleUserChoice(Nutgram $bot): void
     {
         if ($this->checkIfActionCancelled($bot)) {
-            $this->actionCancelled($bot);
+            $this->actionCancelled($bot, "back");
             return;
         }
 
@@ -104,7 +105,7 @@ class ManageChannelsConversation extends Conversation
             return;
         }
 
-        $channelId = $bot->message()->text;
+        $channelId = $this->parseChannelName($bot->message()->text);
         $channelName = Cache::pull($this->getCacheKey($bot));
 
         if (!$channelName) {

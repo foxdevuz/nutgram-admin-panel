@@ -35,10 +35,14 @@ trait AdminHelpers
     /**
      * @throws InvalidArgumentException
      */
-    protected function actionCancelled(Nutgram $bot) : void
+    protected function actionCancelled(Nutgram $bot, $type = "cancel") : void
     {
+        $text = match ($type) {
+            "back" => trans("admin_panel.start_msg"),
+            default => trans("main.action_cancelled"),
+        };
         $bot->sendMessage(
-            text: trans("main.action_cancelled"),
+            text: $text,
             parse_mode: ParseMode::MARKDOWN_LEGACY,
             reply_markup: $this->startKeyboards()
         );
