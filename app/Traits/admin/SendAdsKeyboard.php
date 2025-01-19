@@ -16,9 +16,6 @@ trait SendAdsKeyboard
             ->addRow(
                 KeyboardButton::make("✅"),
                 KeyboardButton::make("❌")
-            )
-            ->addRow(
-                KeyboardButton::make(trans("main.cancel"))
             );
     }
 }

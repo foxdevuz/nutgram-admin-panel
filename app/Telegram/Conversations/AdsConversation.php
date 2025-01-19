@@ -54,7 +54,7 @@ class AdsConversation extends Conversation
     public function storeAds(Nutgram $bot) : void
     {
         $text = $bot->message()->text;
-        if ($text == trans("main.cancel") || $text == "❌") {
+        if ($text == "❌") {
             $this->actionCancelled($bot);
         } else if ($text == "✅") {
            $admin_name = $this->getAdminName($bot->chatId());
@@ -70,6 +70,12 @@ class AdsConversation extends Conversation
                     reply_markup: $this->startKeyboards()
                 );
             }
+        } else {
+            $bot->sendMessage(
+                text: trans("main.wtf"),
+                reply_markup: $this->permissionToSend()
+            );
+            $this->next("storeAds");
         }
     }
 }

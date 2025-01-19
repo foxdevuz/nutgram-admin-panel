@@ -19,11 +19,11 @@ $bot->onMessage(StatisticsConversation::class)
 
 $bot->onMessage(AdsConversation::class)
     ->middleware(CheckAdmin::class)
-    ->middleware(new LaravelTrans("admin_panel_keyboards.ads"));
+    ->middleware(new LaravelTrans("admin_panel_keyboards.send_ad"));
 
 $bot->onMessage(ManageAdminsConversation::class)
     ->middleware(CheckAdmin::class)
-    ->middleware(new LaravelTrans("admin_panel_keyboards.manage_admins"));
+    ->middleware(new LaravelTrans("admin_panel_keyboards.manage_admin"));
 
 $bot->onMessage(ManageChannelsConversation::class)
     ->middleware(CheckAdmin::class)

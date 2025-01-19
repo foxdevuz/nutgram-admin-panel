@@ -17,7 +17,8 @@ class AdsController extends Controller
      */
     public function sendAds()
     {
-        $bot = new Nutgram(env("TELEGRAM_TOKEN"));
+        $bot = new Nutgram(config("services.telegram.token"));
+
         $ads = Ads::where(column: "is_allowed", value: true)->first();
         if (!$ads) {
             return response()->json(["message" => "No Ads found"], 404);
@@ -33,8 +34,6 @@ class AdsController extends Controller
             operator: "<=",
             value: $user_index_limit
         )->get();
-
-
 
         return response()->json(["message" => "Ads sent successfully"]);
     }
