@@ -2,6 +2,7 @@
 
 namespace App\Telegram\Conversations;
 
+use App\Telegram\Commands\StartCommand;
 use App\Traits\user\subs\CheckSubscriptionTrait;
 use SergiX44\Nutgram\Conversations\Conversation;
 use SergiX44\Nutgram\Nutgram;
@@ -13,15 +14,16 @@ class CheckSubsConversation extends Conversation
     {
         $subs = $this->checkSubscription($bot);
         if (!$subs){
-            $bot->sendMessage(
+            $bot->answerCallbackQuery(
                 text: __("subs.no_subs"),
-                reply_markup: $this->susbButtons($bot)
+                show_alert: true
             );
         } else {
-            #### Show Reply Keyboard button here if user needs it
-            $bot->sendMessage(
-                text: __("subs.all_good")
+            $bot->deleteMessage(
+                chat_id: $bot->chatId(),
+                message_id: $bot->messageId()
             );
+            (new StartCommand())->handle($bot);
         }
     }
 }
