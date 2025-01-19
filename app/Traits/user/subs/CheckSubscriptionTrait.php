@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Traits\user;
+namespace App\Traits\user\subs;
 
 use App\Models\Channel;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Properties\ChatMemberStatus;
 
-trait check_subscription
+trait CheckSubscriptionTrait
 {
+    use SubsButtons;
     protected function checkSubscription(Nutgram $bot): bool
     {
         $channels = Channel::all();
-        $user_status = ['false'];
+        $user_status = [false];
         foreach ($channels as $channel){
             $membership_status = $bot->getChatMember(
                 chat_id: $channel->chat_id,
@@ -21,13 +22,13 @@ trait check_subscription
                 $membership_status->status == ChatMemberStatus::MEMBER ||
                 $membership_status->status == ChatMemberStatus::CREATOR)
             {
-                $user_status[0] = 'true';
+                $user_status[0] = true;
             } else {
-                // users have to subscribe to all channels since they are not subscribed to all channels they can't use the bot
-                $user_status[0] = 'false';
+                $user_status[0] = false;
                 break;
             }
         }
+
         return $user_status[0];
     }
 }

@@ -105,7 +105,21 @@ class ManageChannelsConversation extends Conversation
             return;
         }
 
-        $channelId = $this->parseChannelName($bot->message()->text);
+        if ($bot->message()?->forward_origin){
+            $channelId = $this->getIdFromForwardedMessage($bot);
+        } else {
+            if (!$channelId = $this->parseChannelName($bot->message()->text, $bot)){
+                $bot->sendMessage(
+                    text: __("manage_channels.its_private"),
+                    reply_markup: $this->back()
+                );
+                $this->next('processChannelId');
+                return;
+            }
+        }
+
+
+
         $channelName = Cache::pull($this->getCacheKey($bot));
 
         if (!$channelName) {

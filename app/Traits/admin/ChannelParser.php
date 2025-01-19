@@ -2,24 +2,30 @@
 
 namespace App\Traits\admin;
 
+use InvalidArgumentException;
+use SergiX44\Nutgram\Nutgram;
+
 trait ChannelParser
 {
-    protected function parseChannelName(string $input) : string
+    protected function parseChannelName(string $input, Nutgram $bot): false|string
     {
+        // Check for private channel/group link pattern
         if (str_contains($input, '+')) {
-            // private channel / groups
-            if (!str_starts_with($input, 'https://')) {
-                return 'https://t.me/' . ltrim(str_replace(['t.me/', 'https://t.me/'], '', $input), '/');
-            }
-            return $input;
+            return false;
         }
-        // public channel/groups
+
+        // Handle public channels
         $username = trim(str_replace(
             ['https://', 't.me/', '@'],
             '',
             $input
         ));
 
-        return 'https://t.me/' . $username;
+        return '@' . $username;
+    }
+
+    protected function getIdFromForwardedMessage(Nutgram $bot): ?int
+    {
+        return $bot->message()?->forward_from_chat?->id;
     }
 }

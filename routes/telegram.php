@@ -4,12 +4,15 @@
 use App\Telegram\Commands\AdminCommand;
 use App\Telegram\Commands\StartCommand;
 use App\Telegram\Conversations\AdsConversation;
+use App\Telegram\Conversations\CheckSubsConversation;
 use App\Telegram\Conversations\ManageAdminsConversation;
 use App\Telegram\Conversations\ManageChannelsConversation;
 use App\Telegram\Conversations\StatisticsConversation;
 use App\Telegram\Middleware\CheckAdmin;
 use App\Telegram\Middleware\CheckSubscription;
 use App\Telegram\Middleware\LaravelTrans;
+use SergiX44\Nutgram\Nutgram;
+
 
 // Admin Panel section
 $bot->onCommand("admin", AdminCommand::class)->middleware(CheckAdmin::class);
@@ -30,4 +33,9 @@ $bot->onMessage(ManageChannelsConversation::class)
     ->middleware(new LaravelTrans("admin_panel_keyboards.manage_channels"));
 
 // Regular Users section
-$bot->onCommand('start', StartCommand::class)->middleware(CheckSubscription::class);
+$bot->onCommand('start', StartCommand::class)
+    ->middleware(CheckSubscription::class);
+
+
+// callbackData
+$bot->onCallbackQueryData("check_subs:{slug}", CheckSubsConversation::class);
